@@ -5,7 +5,7 @@ const servers = [
     name: "Epic Fantasy",
     version: "v1.0",
     description: "Embark on an epic fantasy adventure. Massive world, unique classes, and engaging quests.",
-    image: "https://images.unsplash.com/photo-1619983081563-430f6360276e?auto=format&fit=crop&w=400&q=80",
+    image: "https://images.unsplash.com/photo-1612832020819-9ba6c4ed5967?auto=format&fit=crop&w=400&q=80",
     votes: 0,
     sponsored: true
   },
@@ -13,21 +13,21 @@ const servers = [
     name: "MythicalWorld",
     version: "2.5",
     description: "A mystical MMORPG with custom dungeons, epic raids, and powerful artifacts.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80",
+    image: "https://images.unsplash.com/photo-1602524816752-f76f292a6d7d?auto=format&fit=crop&w=400&q=80",
     votes: 8
   },
   {
     name: "DarkRealm",
     version: "3.2",
     description: "Immerse yourself in a dark, immersive realm. High rates, PvP, and PvE content.",
-    image: "https://images.unsplash.com/photo-1590608897129-79da83dba8d7?auto=format&fit=crop&w=400&q=80",
+    image: "https://images.unsplash.com/photo-1528312248677-b7740e16f7a3?auto=format&fit=crop&w=400&q=80",
     votes: 5
   },
   {
     name: "FantasyLand",
     version: "1.8",
     description: "Classic MMORPG gameplay with friendly community and frequent updates.",
-    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=400&q=80",
+    image: "https://images.unsplash.com/photo-1611532731909-7f6b9c86bafb?auto=format&fit=crop&w=400&q=80",
     votes: 4
   }
 ]
