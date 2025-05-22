@@ -1,0 +1,1 @@
+export const Button = ({ children, onClick, size = '', variant = 'default', className = '' }) => <button onClick={onClick} className={`rounded-xl px-4 py-2 shadow ${variant === 'outline' ? 'border' : 'bg-black text-white'} ${className}`}>{children}</button>;

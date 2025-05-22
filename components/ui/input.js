@@ -1,0 +1,1 @@
+export const Input = ({ value, onChange }) => <input value={value} onChange={onChange} className='border rounded p-2 w-full' />;

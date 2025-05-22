@@ -1,0 +1,1 @@
+export const Label = ({ children }) => <label className='font-semibold block mb-1'>{children}</label>;
