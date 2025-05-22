@@ -16,6 +16,7 @@ const initialServers = [
   },
   {
     name: "MythicalWorld",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80",
     version: "2.5",
     description: "A mystical MMORPG with custom dungeons, epic raids, and powerful artifacts.",
     image: "/mythicalworld.jpg",
@@ -24,6 +25,7 @@ const initialServers = [
   },
   {
     name: "DarkRealm",
+    image: "https://images.unsplash.com/photo-1590608897129-79da83dba8d7?auto=format&fit=crop&w=400&q=80",
     version: "3.2",
     description: "Immerse yourself in a dark, immersive realm. High rates, PvP, and PvE content.",
     image: "/darkrealm.jpg",
@@ -32,6 +34,7 @@ const initialServers = [
   },
   {
     name: "FantasyLand",
+    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=400&q=80",
     version: "1.8",
     description: "Classic MMORPG gameplay with friendly community and frequent updates.",
     image: "/fantasyland.jpg",
