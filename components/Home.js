@@ -1,143 +1,76 @@
+import Image from 'next/image'
 
-import { useState } from 'react';
-import { Card, CardContent } from "../components/ui/card";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
-
-const initialServers = [
+const servers = [
   {
     name: "Epic Fantasy",
     version: "v1.0",
     description: "Embark on an epic fantasy adventure. Massive world, unique classes, and engaging quests.",
-    image: "/epic-fantasy.jpg",
-    votes: 12,
-    isSponsored: true,
+    image: "https://images.unsplash.com/photo-1619983081563-430f6360276e?auto=format&fit=crop&w=400&q=80",
+    votes: 0,
+    sponsored: true
   },
   {
     name: "MythicalWorld",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80",
     version: "2.5",
     description: "A mystical MMORPG with custom dungeons, epic raids, and powerful artifacts.",
-    image: "/mythicalworld.jpg",
-    votes: 8,
-    isSponsored: false,
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80",
+    votes: 8
   },
   {
     name: "DarkRealm",
-    image: "https://images.unsplash.com/photo-1590608897129-79da83dba8d7?auto=format&fit=crop&w=400&q=80",
     version: "3.2",
     description: "Immerse yourself in a dark, immersive realm. High rates, PvP, and PvE content.",
-    image: "/darkrealm.jpg",
-    votes: 5,
-    isSponsored: false,
+    image: "https://images.unsplash.com/photo-1590608897129-79da83dba8d7?auto=format&fit=crop&w=400&q=80",
+    votes: 5
   },
   {
     name: "FantasyLand",
-    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=400&q=80",
     version: "1.8",
     description: "Classic MMORPG gameplay with friendly community and frequent updates.",
-    image: "/fantasyland.jpg",
-    votes: 4,
-    isSponsored: false,
-  },
-];
+    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=400&q=80",
+    votes: 4
+  }
+]
 
 export default function Home() {
-  const [servers, setServers] = useState(initialServers);
-  const [page, setPage] = useState(1);
-  const [newServer, setNewServer] = useState({ name: '', version: '', description: '', image: '', isSponsored: false });
-
-  const sortedServers = [...servers].sort((a, b) => b.votes - a.votes);
-
-  const handleVote = (index) => {
-    const updatedServers = [...servers];
-    updatedServers[index].votes++;
-    setServers(updatedServers);
-  };
-
-  const handleAddServer = () => {
-    setServers([...servers, { ...newServer, votes: 0 }]);
-    setNewServer({ name: '', version: '', description: '', image: '', isSponsored: false });
-  };
+  const featured = servers.find((s) => s.sponsored)
+  const others = servers.filter((s) => !s.sponsored)
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <header className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">MMO RPG TOP</h1>
-      </header>
+    <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">
+      <h1 className="text-2xl font-bold">MMO RPG TOP</h1>
 
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">Annonce</h2>
-        {servers
-          .filter((s) => s.isSponsored)
-          .map((s, index) => (
-            <Card key={s.name} className="flex gap-4">
-              <img src={s.image} alt={s.name} className="w-24 h-24 object-cover rounded" />
-              <CardContent>
-                <span className="text-xs text-yellow-600 font-bold">Annonce</span>
-                <h3 className="text-lg font-bold">{s.name}</h3>
-                <p className="text-sm text-gray-500">MMORPG | {s.version}</p>
-                <p>{s.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-      </section>
-
-      <section>
-        <h2 className="text-xl font-semibold mb-2">Serveurs</h2>
-        {sortedServers
-          .filter((s) => !s.isSponsored)
-          .map((s, index) => (
-            <Card key={s.name} className="flex justify-between items-center mb-4">
-              <div className="flex gap-4">
-                <img src={s.image} alt={s.name} className="w-20 h-20 object-cover rounded" />
-                <CardContent>
-                  <h3 className="text-lg font-bold">{s.name}</h3>
-                  <p className="text-sm text-gray-500">Version {s.version}</p>
-                  <p>{s.description}</p>
-                </CardContent>
-              </div>
-              <div className="p-2 text-center">
-                <div className="text-lg font-bold">{s.votes}</div>
-                <div className="text-sm text-gray-500">votes</div>
-                <Button size="sm" className="mt-2" onClick={() => handleVote(index)}>Vote</Button>
-              </div>
-            </Card>
-          ))}
-      </section>
-
-      <div className="flex justify-center mt-6">
-        <Button variant="outline">1</Button>
-      </div>
-
-      <section className="mt-10">
-        <h2 className="text-xl font-semibold mb-4">Ajouter un serveur</h2>
-        <div className="grid gap-4">
-          <div>
-            <Label>Nom</Label>
-            <Input value={newServer.name} onChange={(e) => setNewServer({ ...newServer, name: e.target.value })} />
+      {featured && (
+        <div className="bg-white rounded-xl p-4 shadow space-y-2">
+          <div className="flex items-center space-x-4">
+            <Image src={featured.image} alt={featured.name} width={64} height={64} className="rounded" />
+            <div>
+              <div className="text-xs text-orange-500 font-semibold">Annonce</div>
+              <div className="font-bold">{featured.name}</div>
+              <div className="text-xs text-gray-500">MMORPG | {featured.version}</div>
+            </div>
           </div>
-          <div>
-            <Label>Version</Label>
-            <Input value={newServer.version} onChange={(e) => setNewServer({ ...newServer, version: e.target.value })} />
-          </div>
-          <div>
-            <Label>Description</Label>
-            <Input value={newServer.description} onChange={(e) => setNewServer({ ...newServer, description: e.target.value })} />
-          </div>
-          <div>
-            <Label>Image URL</Label>
-            <Input value={newServer.image} onChange={(e) => setNewServer({ ...newServer, image: e.target.value })} />
-          </div>
-          <div>
-            <Label>
-              <input type="checkbox" checked={newServer.isSponsored} onChange={(e) => setNewServer({ ...newServer, isSponsored: e.target.checked })} /> Annonce sponsorisée
-            </Label>
-          </div>
-          <Button onClick={handleAddServer}>Ajouter</Button>
+          <p className="text-sm text-gray-600">{featured.description}</p>
         </div>
-      </section>
+      )}
+
+      <div className="space-y-4">
+        <h2 className="font-bold text-lg">Serveurs</h2>
+        {others.map((s, i) => (
+          <div key={i} className="bg-white rounded-xl p-4 shadow flex space-x-4 items-center">
+            <Image src={s.image} alt={s.name} width={48} height={48} className="rounded" />
+            <div className="flex-1">
+              <div className="font-bold">{s.name}</div>
+              <div className="text-xs text-gray-500">Version {s.version}</div>
+              <div className="text-sm text-gray-600">{s.description}</div>
+            </div>
+            <div className="text-center">
+              <div className="text-xs text-gray-500">{s.votes} votes</div>
+              <button className="bg-black text-white text-sm px-3 py-1 rounded">Vote</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  );
+  )
 }
